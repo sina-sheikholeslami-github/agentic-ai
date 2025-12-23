@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: openai
+
+  datasource:
+    url: jdbc:h2:file:C:\Users\ssh5958\Desktop\agentic-ai\h2;AUTO_SERVER=true
+    driver-class-name: org.h2.Driver
+    username: sinasheikh
+    password: 1234
+
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: "gpt-4.1-mini"
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
+            schema: classpath:/schema/schema-h2db.sql
+
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: DEBUG
